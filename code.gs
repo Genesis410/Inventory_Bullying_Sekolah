@@ -1,16 +1,27 @@
 function onFormSubmit(e) {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1");
   const lastRow = sheet.getLastRow();
-  const text = sheet.getRange(lastRow, 10).getValue(); // Cerita
+  const text = sheet.getRange(lastRow, 2).getValue(); // Cerita
   const result = analyzeText(text);
 
-  sheet.getRange(lastRow, 11).setValue(result.sentiment); // Sentimen
-  sheet.getRange(lastRow, 12).setValue(result.violence);  // Tipe Kekerasan
-  sheet.getRange(lastRow, 13).setValue(result.score);     // Skor Risiko
+  // Masukkan hasil analisis ke kolom
+  sheet.getRange(lastRow, 3).setValue(result.sentiment); // Sentimen, ganti jika diubah
+  sheet.getRange(lastRow, 4).setValue(result.violence);  // Tipe Kekerasan, ganti jika diubah
+  sheet.getRange(lastRow, 5).setValue(result.score);     // Skor Risiko, ganti jika diubah
 
-  if (result.score >= 80) {
-    MailApp.sendEmail("Nama Email", "‼️Laporan Risiko Tinggi‼️",
-      `Siswa dengan nama ${sheet.getRange(lastRow, 3).getValue()} kelas ${sheet.getRange(lastRow, 4).getValue()} menunjukkan risiko tinggi kekerasan. dengan tipe kekerasan ${sheet.getRange(lastRow, 12).getValue()}. \n\nIsi Cerita:\n"${text}"`);
+  // Kirim email ke guru 
+  if (result.score >= ) {
+    const emailTujuan = "ihsanakmalarrazi15@gmail.com"; // Ganti dengan email guru/konselor
+
+    const subject = "‼️ Laporan Bullying pada Siswa ‼️";
+    const body = `📌 Deteksi Risiko Tinggi Kekerasan\n\n` +
+                 `⚠️ Jenis Kekerasan: ${result.violence}\n` +
+                 `🔎 Sentimen: ${result.sentiment}\n` +
+                 `📊 Skor Risiko: ${result.score}\n` +
+                 `📝 Isi Cerita: ${text}\n\n` +
+                 `💬 "Jadilah awal dari perubahan, untuk menciptakan keadaan yang lebih aman"`;
+
+    MailApp.sendEmail(emailTujuan, subject, body);
   }
 }
 
