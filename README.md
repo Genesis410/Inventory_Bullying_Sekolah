@@ -21,7 +21,7 @@ ini adalah inventory bullying agar murid yang terkena bullying bisa mengadu lewa
 2. Buka [Google Form](https://forms.google.com).
 3. Buat formulir baru.
 4. Tambahkan **1 pertanyaan esai panjang**:
-   - Judul: `Ceritakan pengalamanmu`
+   - Judul: `Apa yang ingin kamu sampaikan?`
    - Wajib diisi: ✅
 
 ---
@@ -39,7 +39,7 @@ ini adalah inventory bullying agar murid yang terkena bullying bisa mengadu lewa
 
 1. Di Google Sheets, klik:
    - `Extensions` → `Apps Script`.
-2. Hapus semua isi default, lalu **tempelkan skrip kode yang telah diberikan kamu**.
+2. Hapus semua isi default, lalu **tempelkan skrip kode yang telah diberikan**.
 3. Simpan dengan nama Detector Code
 
 ---
