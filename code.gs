@@ -11,7 +11,7 @@ function onFormSubmit(e) {
 
   // Kirim email ke guru 
   if (result.score >= ) {
-    const emailTujuan = "ihsanakmalarrazi15@gmail.com"; // Ganti dengan email guru/konselor
+    const emailTujuan = "nama123@gmail.com"; // Ganti dengan email guru/konselor
 
     const subject = "‼️ Laporan Bullying pada Siswa ‼️";
     const body = `📌 Deteksi Risiko Tinggi Kekerasan\n\n` +
