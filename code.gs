@@ -3,10 +3,10 @@ function onFormSubmit(e) {
   const lastRow = sheet.getLastRow();
   const text = sheet.getRange(lastRow, 2).getValue(); // Cerita
 
-  // Ambil data langsung dari e.values (index mulai dari 0)
-  const nama = e.values[3];  // kolom ketiga di sheet
-  const kelas = e.values[4]; // kolom keempat di sheet
-  const email = e.values[2]; // kolom kelima di sheet
+  // Ambil data langsung dari e.values (kolom nomor 1 dihitung dengan 0)
+  const nama = e.values[3];  
+  const kelas = e.values[4]; 
+  const email = e.values[2]; 
 
   const result = analyzeText(text);
 
