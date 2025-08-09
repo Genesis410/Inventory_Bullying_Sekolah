@@ -2,24 +2,34 @@ function onFormSubmit(e) {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1");
   const lastRow = sheet.getLastRow();
   const text = sheet.getRange(lastRow, 2).getValue(); // Cerita
+
+  // Ambil data langsung dari e.values (index mulai dari 0)
+  const nama = e.values[4];  // kolom ketiga di sheet
+  const kelas = e.values[5]; // kolom keempat di sheet
+  const email = e.values[3]; // kolom kelima di sheet
+
   const result = analyzeText(text);
 
   // Masukkan hasil analisis ke kolom
-  sheet.getRange(lastRow, 3).setValue(result.sentiment); // Sentimen, ganti jika diubah
-  sheet.getRange(lastRow, 4).setValue(result.violence);  // Tipe Kekerasan, ganti jika diubah
-  sheet.getRange(lastRow, 5).setValue(result.score);     // Skor Risiko, ganti jika diubah
+  sheet.getRange(lastRow, 6).setValue(result.sentiment);
+  sheet.getRange(lastRow, 7).setValue(result.violence);
+  sheet.getRange(lastRow, 8).setValue(result.score);
 
-  // Kirim email ke guru 
-  if (result.score >= ) {
-    const emailTujuan = "nama123@gmail.com"; // Ganti dengan email guru/konselor
+  // Kirim email ke guru
+  if (result.score >= 0) {
+    const emailTujuan = "fitraihsansukandar@gmail.com"; // Email guru/konselor
 
-    const subject = "‼️ Laporan Bullying pada Siswa ‼️";
-    const body = `📌 Deteksi Risiko Tinggi Kekerasan\n\n` +
-                 `⚠️ Jenis Kekerasan: ${result.violence}\n` +
-                 `🔎 Sentimen: ${result.sentiment}\n` +
-                 `📊 Skor Risiko: ${result.score}\n` +
-                 `📝 Isi Cerita: ${text}\n\n` +
-                 `💬 "Jadilah awal dari perubahan, untuk menciptakan keadaan yang lebih aman"`;
+    const subject = "📢 Laporan Bullying pada Siswa !";
+
+    const body = `⚠️ Deteksi Risiko Tinggi Kekerasan\n
+    🔎 Jenis Kekerasan: ${result.violence}\n
+    🗣 Sentimen: ${result.sentiment}\n
+    👤 Nama: ${nama}\n
+    🏫 Kelas: ${kelas}\n
+    📧 Email: ${email}\n
+    📊 Skor Risiko: ${result.score}\n
+    📝 Isi Cerita: ${text}\n
+    💬 Jadilah awal dari perubahan, untuk menciptakan keadaan yang lebih aman`;
 
     MailApp.sendEmail(emailTujuan, subject, body);
   }
