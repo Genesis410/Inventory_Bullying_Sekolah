@@ -4,9 +4,9 @@ function onFormSubmit(e) {
   const text = sheet.getRange(lastRow, 2).getValue(); // Cerita
 
   // Ambil data langsung dari e.values (index mulai dari 0)
-  const nama = e.values[4];  // kolom ketiga di sheet
-  const kelas = e.values[5]; // kolom keempat di sheet
-  const email = e.values[3]; // kolom kelima di sheet
+  const nama = e.values[3];  // kolom ketiga di sheet
+  const kelas = e.values[4]; // kolom keempat di sheet
+  const email = e.values[2]; // kolom kelima di sheet
 
   const result = analyzeText(text);
 
